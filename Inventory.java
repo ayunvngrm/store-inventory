@@ -22,7 +22,7 @@ public class Inventory {
 
         @Override
         public String toString() {
-            return "Product [ID: " + productId + ", Name: " + productName + ", Price: $" + price + ", Stock: " + stock + "]";
+            return "Product [ID: " + productId + ", Name: " + productName + ", Price: Rp " + price + ", Stock: " + stock + "]";
         }
     }
 
@@ -42,6 +42,7 @@ public class Inventory {
             for (Product product : products) {
                 if (product.getProductId().equals(productId)) {
                     productToRemove = product;
+                    System.out.println("Successfully Remove Product\n");
                     break;
                 }
             }
@@ -49,7 +50,7 @@ public class Inventory {
             if (productToRemove != null) {
                 products.remove(productToRemove);
             } else {
-                System.out.println("Product with ID " + productId + " not found.");
+                System.out.println("Product with ID " + productId + " not found.\n");
             }
         }
 
@@ -58,6 +59,7 @@ public class Inventory {
             for (Product product : products) {
                 System.out.println(product);
             }
+            System.out.println();
         }
     }
 
@@ -73,7 +75,7 @@ public class Inventory {
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -85,10 +87,10 @@ public class Inventory {
                     double price = scanner.nextDouble();
                     System.out.print("Enter Product Stock: ");
                     int stock = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline character
-
+                    scanner.nextLine();
                     Product newProduct = new Product(productId, productName, price, stock);
                     productManager.addProduct(newProduct);
+                    System.out.println("Successfully Added New Product\n");
                     break;
                 case 2:
                     System.out.print("Enter Product ID to remove: ");
